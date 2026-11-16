@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-export default function BookScene() {
+export default function BookScene({ paused = false }: { paused?: boolean }) {
   const host = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = host.current;
@@ -107,7 +107,7 @@ export default function BookScene() {
     const clock = new THREE.Clock();
     const render = () => {
       const t = clock.getElapsedTime();
-      if (!reduced) {
+      if (!reduced && !paused) {
         book.rotation.y += (-0.42 + mx * 0.5 - book.rotation.y) * 0.04;
         book.rotation.x += (-0.1 + my * 0.2 - book.rotation.x) * 0.04;
         book.position.y = Math.sin(t * 0.7) * 0.09;
@@ -131,7 +131,7 @@ export default function BookScene() {
       renderer.dispose();
       renderer.domElement.remove();
     };
-  }, []);
+  }, [paused]);
   return (
     <div
       ref={host}

@@ -10,33 +10,220 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutUsRouteImport } from './routes/about-us'
+import { Route as AmazonPublishingServicesRouteImport } from './routes/amazon-publishing-services'
+import { Route as AudioBookRouteImport } from './routes/audio-book'
+import { Route as BookEditingRouteImport } from './routes/book-editing'
+import { Route as BookIllustrationRouteImport } from './routes/book-illustration'
+import { Route as BookMarketingRouteImport } from './routes/book-marketing'
+import { Route as BookPublishingRouteImport } from './routes/book-publishing'
+import { Route as BookWritingServicesRouteImport } from './routes/book-writing-services'
+import { Route as ChildrensBookEditingRouteImport } from './routes/childrens-book-editing'
+import { Route as ChildrensBookMarketingRouteImport } from './routes/childrens-book-marketing'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as BlogsIndexRouteImport } from './routes/blogs.index'
+import { Route as BlogsSlugRouteImport } from './routes/blogs.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutUsRoute = AboutUsRouteImport.update({
+  id: '/about-us',
+  path: '/about-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AmazonPublishingServicesRoute =
+  AmazonPublishingServicesRouteImport.update({
+    id: '/amazon-publishing-services',
+    path: '/amazon-publishing-services',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AudioBookRoute = AudioBookRouteImport.update({
+  id: '/audio-book',
+  path: '/audio-book',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookEditingRoute = BookEditingRouteImport.update({
+  id: '/book-editing',
+  path: '/book-editing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookIllustrationRoute = BookIllustrationRouteImport.update({
+  id: '/book-illustration',
+  path: '/book-illustration',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookMarketingRoute = BookMarketingRouteImport.update({
+  id: '/book-marketing',
+  path: '/book-marketing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookPublishingRoute = BookPublishingRouteImport.update({
+  id: '/book-publishing',
+  path: '/book-publishing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookWritingServicesRoute = BookWritingServicesRouteImport.update({
+  id: '/book-writing-services',
+  path: '/book-writing-services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChildrensBookEditingRoute = ChildrensBookEditingRouteImport.update({
+  id: '/childrens-book-editing',
+  path: '/childrens-book-editing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChildrensBookMarketingRoute = ChildrensBookMarketingRouteImport.update({
+  id: '/childrens-book-marketing',
+  path: '/childrens-book-marketing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogsIndexRoute = BlogsIndexRouteImport.update({
+  id: '/blogs/',
+  path: '/blogs/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogsSlugRoute = BlogsSlugRouteImport.update({
+  id: '/blogs/$slug',
+  path: '/blogs/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
+  '/amazon-publishing-services': typeof AmazonPublishingServicesRoute
+  '/audio-book': typeof AudioBookRoute
+  '/book-editing': typeof BookEditingRoute
+  '/book-illustration': typeof BookIllustrationRoute
+  '/book-marketing': typeof BookMarketingRoute
+  '/book-publishing': typeof BookPublishingRoute
+  '/book-writing-services': typeof BookWritingServicesRoute
+  '/childrens-book-editing': typeof ChildrensBookEditingRoute
+  '/childrens-book-marketing': typeof ChildrensBookMarketingRoute
+  '/contact': typeof ContactRoute
+  '/services': typeof ServicesRoute
+  '/blogs/$slug': typeof BlogsSlugRoute
+  '/blogs/': typeof BlogsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
+  '/amazon-publishing-services': typeof AmazonPublishingServicesRoute
+  '/audio-book': typeof AudioBookRoute
+  '/book-editing': typeof BookEditingRoute
+  '/book-illustration': typeof BookIllustrationRoute
+  '/book-marketing': typeof BookMarketingRoute
+  '/book-publishing': typeof BookPublishingRoute
+  '/book-writing-services': typeof BookWritingServicesRoute
+  '/childrens-book-editing': typeof ChildrensBookEditingRoute
+  '/childrens-book-marketing': typeof ChildrensBookMarketingRoute
+  '/contact': typeof ContactRoute
+  '/services': typeof ServicesRoute
+  '/blogs/$slug': typeof BlogsSlugRoute
+  '/blogs': typeof BlogsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
+  '/amazon-publishing-services': typeof AmazonPublishingServicesRoute
+  '/audio-book': typeof AudioBookRoute
+  '/book-editing': typeof BookEditingRoute
+  '/book-illustration': typeof BookIllustrationRoute
+  '/book-marketing': typeof BookMarketingRoute
+  '/book-publishing': typeof BookPublishingRoute
+  '/book-writing-services': typeof BookWritingServicesRoute
+  '/childrens-book-editing': typeof ChildrensBookEditingRoute
+  '/childrens-book-marketing': typeof ChildrensBookMarketingRoute
+  '/contact': typeof ContactRoute
+  '/services': typeof ServicesRoute
+  '/blogs/$slug': typeof BlogsSlugRoute
+  '/blogs/': typeof BlogsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about-us'
+    | '/amazon-publishing-services'
+    | '/audio-book'
+    | '/book-editing'
+    | '/book-illustration'
+    | '/book-marketing'
+    | '/book-publishing'
+    | '/book-writing-services'
+    | '/childrens-book-editing'
+    | '/childrens-book-marketing'
+    | '/contact'
+    | '/services'
+    | '/blogs/$slug'
+    | '/blogs/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about-us'
+    | '/amazon-publishing-services'
+    | '/audio-book'
+    | '/book-editing'
+    | '/book-illustration'
+    | '/book-marketing'
+    | '/book-publishing'
+    | '/book-writing-services'
+    | '/childrens-book-editing'
+    | '/childrens-book-marketing'
+    | '/contact'
+    | '/services'
+    | '/blogs/$slug'
+    | '/blogs'
+  id:
+    | '__root__'
+    | '/'
+    | '/about-us'
+    | '/amazon-publishing-services'
+    | '/audio-book'
+    | '/book-editing'
+    | '/book-illustration'
+    | '/book-marketing'
+    | '/book-publishing'
+    | '/book-writing-services'
+    | '/childrens-book-editing'
+    | '/childrens-book-marketing'
+    | '/contact'
+    | '/services'
+    | '/blogs/$slug'
+    | '/blogs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutUsRoute: typeof AboutUsRoute
+  AmazonPublishingServicesRoute: typeof AmazonPublishingServicesRoute
+  AudioBookRoute: typeof AudioBookRoute
+  BookEditingRoute: typeof BookEditingRoute
+  BookIllustrationRoute: typeof BookIllustrationRoute
+  BookMarketingRoute: typeof BookMarketingRoute
+  BookPublishingRoute: typeof BookPublishingRoute
+  BookWritingServicesRoute: typeof BookWritingServicesRoute
+  ChildrensBookEditingRoute: typeof ChildrensBookEditingRoute
+  ChildrensBookMarketingRoute: typeof ChildrensBookMarketingRoute
+  ContactRoute: typeof ContactRoute
+  ServicesRoute: typeof ServicesRoute
+  BlogsSlugRoute: typeof BlogsSlugRoute
+  BlogsIndexRoute: typeof BlogsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +235,123 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about-us': {
+      id: '/about-us'
+      path: '/about-us'
+      fullPath: '/about-us'
+      preLoaderRoute: typeof AboutUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/amazon-publishing-services': {
+      id: '/amazon-publishing-services'
+      path: '/amazon-publishing-services'
+      fullPath: '/amazon-publishing-services'
+      preLoaderRoute: typeof AmazonPublishingServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/audio-book': {
+      id: '/audio-book'
+      path: '/audio-book'
+      fullPath: '/audio-book'
+      preLoaderRoute: typeof AudioBookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/book-editing': {
+      id: '/book-editing'
+      path: '/book-editing'
+      fullPath: '/book-editing'
+      preLoaderRoute: typeof BookEditingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/book-illustration': {
+      id: '/book-illustration'
+      path: '/book-illustration'
+      fullPath: '/book-illustration'
+      preLoaderRoute: typeof BookIllustrationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/book-marketing': {
+      id: '/book-marketing'
+      path: '/book-marketing'
+      fullPath: '/book-marketing'
+      preLoaderRoute: typeof BookMarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/book-publishing': {
+      id: '/book-publishing'
+      path: '/book-publishing'
+      fullPath: '/book-publishing'
+      preLoaderRoute: typeof BookPublishingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/book-writing-services': {
+      id: '/book-writing-services'
+      path: '/book-writing-services'
+      fullPath: '/book-writing-services'
+      preLoaderRoute: typeof BookWritingServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/childrens-book-editing': {
+      id: '/childrens-book-editing'
+      path: '/childrens-book-editing'
+      fullPath: '/childrens-book-editing'
+      preLoaderRoute: typeof ChildrensBookEditingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/childrens-book-marketing': {
+      id: '/childrens-book-marketing'
+      path: '/childrens-book-marketing'
+      fullPath: '/childrens-book-marketing'
+      preLoaderRoute: typeof ChildrensBookMarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blogs/': {
+      id: '/blogs/'
+      path: '/blogs'
+      fullPath: '/blogs/'
+      preLoaderRoute: typeof BlogsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blogs/$slug': {
+      id: '/blogs/$slug'
+      path: '/blogs/$slug'
+      fullPath: '/blogs/$slug'
+      preLoaderRoute: typeof BlogsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutUsRoute: AboutUsRoute,
+  AmazonPublishingServicesRoute: AmazonPublishingServicesRoute,
+  AudioBookRoute: AudioBookRoute,
+  BookEditingRoute: BookEditingRoute,
+  BookIllustrationRoute: BookIllustrationRoute,
+  BookMarketingRoute: BookMarketingRoute,
+  BookPublishingRoute: BookPublishingRoute,
+  BookWritingServicesRoute: BookWritingServicesRoute,
+  ChildrensBookEditingRoute: ChildrensBookEditingRoute,
+  ChildrensBookMarketingRoute: ChildrensBookMarketingRoute,
+  ContactRoute: ContactRoute,
+  ServicesRoute: ServicesRoute,
+  BlogsSlugRoute: BlogsSlugRoute,
+  BlogsIndexRoute: BlogsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

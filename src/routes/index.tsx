@@ -128,23 +128,8 @@ const books = [
     desc: "Little readers. Limitless imagination.",
   },
 ];
-function Brand() {
-  return (
-    <a href="#" className="brand" aria-label="StoryPrint Agency home">
-      <span className="brand-mark">
-        <BookOpen size={26} strokeWidth={1.5} />
-        <span>✦</span>
-      </span>
-      <span>
-        storyprint<span className="brand-agency">THE AUTHOR’S CREATIVE PARTNER</span>
-      </span>
-      <i>®</i>
-    </a>
-  );
-}
 function Home() {
   const root = useRef<HTMLDivElement>(null);
-  const [menu, setMenu] = useState(false);
   const [activeService, setActiveService] = useState<number | null>(null);
   const [selectedBook, setSelectedBook] = useState<number | null>(null);
   const [emailReady, setEmailReady] = useState("");
@@ -169,6 +154,21 @@ function Home() {
             ease: "power2.out",
           }),
         );
+        gsap.to(".float-note", {
+          y: -12,
+          rotation: -4,
+          duration: 2.8,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+        gsap.to(".orb-two", {
+          rotation: 10,
+          duration: 12,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
         gsap.to(".orbit-word", { rotation: 360, duration: 55, repeat: -1, ease: "none" });
       }, root);
       return () => context.revert();
@@ -198,41 +198,7 @@ function Home() {
   }, [selectedBook]);
   return (
     <div ref={root}>
-      <div className="announcement">
-        <span>A new chapter starts with a conversation.</span>
-        <a href="#contact">
-          Let’s write yours <ArrowUpRight size={13} />
-        </a>
-      </div>
-      <header className="site-header">
-        <div className="container nav">
-          <Brand />
-          <nav aria-label="Main navigation" className={menu ? "nav-links open" : "nav-links"}>
-            {[
-              ["Services", "services"],
-              ["Our approach", "approach"],
-              ["Selected work", "work"],
-              ["FAQs", "faq"],
-            ].map(([name, id]) => (
-              <a key={id} href={"#" + id} onClick={() => setMenu(false)}>
-                {name}
-              </a>
-            ))}
-            <a className="button small" href="#contact" onClick={() => setMenu(false)}>
-              Let’s talk books <ArrowUpRight size={16} />
-            </a>
-          </nav>
-          <button
-            className="menu-toggle"
-            aria-label={menu ? "Close menu" : "Open menu"}
-            aria-expanded={menu}
-            onClick={() => setMenu(!menu)}
-          >
-            {menu ? <X /> : <Menu />}
-          </button>
-        </div>
-      </header>
-      <main>
+      <main id="main-content">
         <section className="hero container">
           <div className="hero-copy">
             <div className="eyebrow hero-reveal">
@@ -362,6 +328,22 @@ function Home() {
                   {activeService === i ? "A closer look" : "Explore service"}
                   {activeService === i ? <X size={17} /> : <ArrowUpRight size={18} />}
                 </button>
+                <a
+                  className="service-page-link"
+                  href={
+                    "/" +
+                    [
+                      "book-writing-services",
+                      "book-editing",
+                      "book-illustration",
+                      "book-publishing",
+                      "book-marketing",
+                      "audio-book",
+                    ][i]
+                  }
+                >
+                  View full service <ArrowRight size={13} />
+                </a>
                 {activeService === i && (
                   <div className="service-details">
                     <p>{s.details}</p>
@@ -679,26 +661,6 @@ function Home() {
           </div>
         </section>
       </main>
-      <footer>
-        <div className="container footer-main">
-          <Brand />
-          <p>
-            Good stories bring us together.
-            <br />
-            Let’s put yours into the world.
-          </p>
-          <a href="#" className="back-top">
-            BACK TO TOP <ArrowUpRight size={15} />
-          </a>
-        </div>
-        <div className="container footer-bottom">
-          <span>© {new Date().getFullYear()} StoryPrint Agency. All rights reserved.</span>
-          <span>INDEPENDENT SPIRIT. SHARED IMAGINATION.</span>
-          <a href="#contact">
-            Let’s make something meaningful <span>✦</span>
-          </a>
-        </div>
-      </footer>
       {selectedBook !== null && (
         <div className="modal-backdrop" onClick={() => setSelectedBook(null)}>
           <div
