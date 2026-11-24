@@ -7,8 +7,7 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
-  // Deploy SSR as a Netlify function there and as a Node.js server elsewhere.
-  nitro: { preset: process.env["NETLIFY"] === "true" ? "netlify" : "node-server" },
+  nitro: { preset: "node-server" },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this

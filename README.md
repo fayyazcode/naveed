@@ -43,23 +43,3 @@ Connect the GoDaddy Node.js Hosting app to this GitHub repository and select the
 For ZIP upload, include the repository source with `package.json` and `package-lock.json` at the root. Exclude `node_modules`, generated output, and local environment files.
 
 Open the GoDaddy preview and check the home page, `/audio-book`, a blog article, an invalid article URL that should return 404, and that CSS loads. Publish and connect your domain after the preview passes.
-
-## Deploy to Netlify
-
-Connect the GitHub repository and deploy the `main` branch with the repository root as the base directory. The committed `netlify.toml` sets:
-
-- Build command: `npm run build`
-- Publish directory: `dist`
-- Node.js: `24`
-
-Netlify sets `NETLIFY=true`; the Vite configuration then selects Nitro's Netlify preset. This produces public assets in `dist` and the SSR function in `.netlify/functions-internal/server`. Both are needed: the public directory alone is not a static export of the application. Nitro generates the function routing; do not add an `index.html` SPA redirect.
-
-The repository uses `package-lock.json` and npm for reproducible installation. The obsolete Bun lockfile has been removed so Netlify does not select Bun from a stale lockfile. Existing `bun run build` and `dist/client` UI settings are superseded by `netlify.toml`; update them to match if maintaining those settings manually.
-
-After pulling this change, trigger a new deploy (clear the build cache if the old Bun installation is reused). Test `/`, `/about-us`, `/contact`, `/audio-book` and an article URL directly to verify SSR and deep links. A successful local build does not establish that a hosted deploy has completed.
-
-To reproduce the production output locally:
-
-```sh
-NETLIFY=true npm run build
-```
