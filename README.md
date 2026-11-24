@@ -36,6 +36,21 @@ Hero artwork is tailored to the page: a Three.js book for publishing; animated o
 
 The Contact page includes a required-fields check, service and project-stage selection, project brief, optional timing, and consent. Changes to the brief clear any prepared email link so a stale inquiry is not sent. No physical address, phone number, fabricated staff profiles or guaranteed response times are asserted.
 
+## Deploy to GoDaddy Node.js
+
+Use a GoDaddy plan that can run a persistent Node.js application, with Node.js 24 selected. From the application root on Linux, install the locked dependencies and build the SSR server:
+
+```sh
+npm ci --include=dev
+npm run build:godaddy
+```
+
+In the hosting control panel, set the application root to the directory containing `package.json`, set the startup file to `server.cjs`, and set `NODE_ENV=production`. If your plan uses a start command, use `npm start`. Nitro uses the hosting provider's `PORT` when supplied and defaults to port 3000. On a VPS, run the app under a service manager and point the HTTPS reverse proxy at that port.
+
+If building off-host, deploy `server.cjs` and the entire `.output/` directory together, including `.output/public/`. The build contains the SSR entry and the assets it serves.
+
+Before changing DNS, use a test hostname to check the home page, a direct request to `/audio-book`, an article under `/blogs`, and an invalid article URL that should return 404. Verify that styles load and the contact form opens a prefilled email. Point the production domain to GoDaddy once those checks and HTTPS pass.
+
 ## Deploy to Netlify
 
 Connect the GitHub repository and deploy the `main` branch with the repository root as the base directory. The committed `netlify.toml` sets:
