@@ -38,18 +38,11 @@ The Contact page includes a required-fields check, service and project-stage sel
 
 ## Deploy to GoDaddy Node.js
 
-Use a GoDaddy plan that can run a persistent Node.js application, with Node.js 24 selected. From the application root on Linux, install the locked dependencies and build the SSR server:
+Connect the GoDaddy Node.js Hosting app to this GitHub repository and select the `main` branch. GoDaddy installs production dependencies, runs `npm run build` to create the Nitro SSR bundle, and runs `npm start` to launch `server.cjs`. The app requests Node.js 24 and Nitro listens on the port GoDaddy assigns through `PORT`.
 
-```sh
-npm ci --include=dev
-npm run build:godaddy
-```
+For ZIP upload, include the repository source with `package.json` and `package-lock.json` at the root. Exclude `node_modules`, generated output, and local environment files.
 
-In the hosting control panel, set the application root to the directory containing `package.json`, set the startup file to `server.cjs`, and set `NODE_ENV=production`. If your plan uses a start command, use `npm start`. Nitro uses the hosting provider's `PORT` when supplied and defaults to port 3000. On a VPS, run the app under a service manager and point the HTTPS reverse proxy at that port.
-
-If building off-host, deploy `server.cjs` and the entire `.output/` directory together, including `.output/public/`. The build contains the SSR entry and the assets it serves.
-
-Before changing DNS, use a test hostname to check the home page, a direct request to `/audio-book`, an article under `/blogs`, and an invalid article URL that should return 404. Verify that styles load and the contact form opens a prefilled email. Point the production domain to GoDaddy once those checks and HTTPS pass.
+Open the GoDaddy preview and check the home page, `/audio-book`, a blog article, an invalid article URL that should return 404, and that CSS loads. Publish and connect your domain after the preview passes.
 
 ## Deploy to Netlify
 

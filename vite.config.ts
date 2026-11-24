@@ -7,14 +7,8 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
-  // Netlify requires its own server function bundle; keep the default target
-  // for local and Lovable builds.
-  nitro:
-    process.env["GODADDY_NODE"] === "true"
-      ? { preset: "node-server" }
-      : process.env["NETLIFY"] === "true"
-        ? { preset: "netlify" }
-        : {},
+  // Deploy SSR as a Netlify function there and as a Node.js server elsewhere.
+  nitro: { preset: process.env["NETLIFY"] === "true" ? "netlify" : "node-server" },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
